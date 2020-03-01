@@ -1,0 +1,85 @@
+5 Core Concepts in Spring Security
+-Authentication
+-Principal
+-Roles
+-Authorization
+-Granted Authorities
+
+Authentication & Authorization:
+Authentication is answereing "Who are You?" -- UserName and Password
+Authorization is "What do You Want?"
+Knowledge Based Authentication is Simple and very Effective but with greater risk
+Possesion based Authentication
+Multi-factor Authentication
+
+Authorization s examining what you want and checking if u can have/do what you are requesting for.
+
+Users are authenticated first before authorization
+
+Principal:
+This is the person you have identified through the Identification process, it is the currently logged in user/account.
+
+How does Authorization Happen? Only through Granted Authorities
+Granted Authorities:
+This are roles granted to a User, configured to do some specific action.
+
+Roles: This are Group of Authorities that are usually assigned together
+They allow Granted Authorities be given to users profiled in that particular role. It makes creation and profiling easy.
+
+In some cases Authorities are somehow mistaken for Roles and can be subbed for each other, But in Spring Boot the ffg holds true
+
+Fine grain Permissions = Authorities
+More Coarse Group Based Permissions = Roles
+
+
+SpringBoot works with Filters associated with Servlets Technolgy, they intercepts requests from users(cross cutting)  Filters can be applied to all possible URL.
+
+Spring Boot adds Mandatory Authentication fro all URL, except error page ("/error")
+It adds a login form
+Handles Login Error and shows a login message
+Creates a user and sets a default password
+
+Authentication manager is the mechanism  that does authentication in Spring Boot, it uses the authenticate() method for Authentication
+We can get hold of it and configure it for our own build by doing the following:
+--Get Hold of the AuthenticationManagerBuilder 
+--Set the Configuration on it
+
+How do u get hold of the AuthenticationManagerBuilder?
+First: There's a class sitting on the Spring Security App(WebSecurityConfigurerAdapter), extend that class
+Second: Override the configure(AuthenticationManagerBuilder authBuild) method there
+
+N.B: Always deal with Hashed Password
+
+HttpSecurity:
+This helps you to configure what are the parts and what the access level of those path is.
+We use HttpSecurity in SpringBoot for Authorization purposes.
+
+WebSecurityConfigurerAdapter:
+This class is used in  Spring Boot fo both Authentication and Authorization requests
+
+Authentication Filter
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
