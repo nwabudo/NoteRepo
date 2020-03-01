@@ -57,7 +57,20 @@ We use HttpSecurity in SpringBoot for Authorization purposes.
 WebSecurityConfigurerAdapter:
 This class is used in  Spring Boot fo both Authentication and Authorization requests
 
-Authentication Filter
+Authentication Filter: 
+Works with using input and Output parameters.
+When Authentiaction is done it not only returns true or false, it also returns information about the Principal
+
+Providers: Are responsible for doing the actual authentiaction process
+AuthenticationProvider: This interface houses the method authenticate()
+
+With this an application can have several Authentiaction Provider implemenatation class, to manage all this Providers an AuthenticationManager is used as it co-ordinates with all the available Providers, it delegates the authentication based on the authentication process the user chooses. Now the manager can only do this when the available provider sends all that they support.
+
+In order for the Authentication to be done, the authenticationProviders makes use of the UserDetailsService(loadByUserName()) Interface
+
+When all this is done and successful, the Authentication Filter stores the Principal on a ThreadLocal--this helps against future need to know at every instance the particular user logged in.
+
+A Filter stores the Verified user and stores in the current session so that you do not have to  
 
 
 
